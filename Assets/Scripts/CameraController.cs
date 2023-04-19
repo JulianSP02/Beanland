@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    Transform followTarget;
+    [SerializeField]
+    Vector3 offset;
+    [SerializeField]
+    float smoothTime = 0.5F;
     void Start()
     {
-        
+        if (offset == Vector3.zero)
+        {
+            offset = transform.position - followTarget.position;
+        }
+        /* Esconder el cursor del Mouse */
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
-
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        Vector3 targetPosition = followTarget.position + offset;
+        transform.position = targetPosition;
+        transform.LookAt(followTarget);
     }
 }
