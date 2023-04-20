@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
-public class TimerController : MonoBehaviour
+public class TimerEnemy : MonoBehaviour
 {
     [SerializeField]
-    float timer = 121.0F;
+    float timer = 5.0F;
 
     [SerializeField]
     Text textTimer;
@@ -21,14 +20,14 @@ public class TimerController : MonoBehaviour
 
     }
 
-    void Update()
+    public void Update()
     {
         timer -= Time.deltaTime;
 
         textTimer.text = "" + timer.ToString();
 
         Finish();
-    } 
+    }
 
     void Finish()
     {
