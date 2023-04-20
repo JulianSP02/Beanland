@@ -26,9 +26,14 @@ public class TimerController : MonoBehaviour
 
         textTimer.text = "" + timer.ToString();
 
-        if(timer == 0.0F)
-        {
-            SceneManager.GetSceneByName("Game Over");
-        }
+        Finish();
     } 
+
+    void Finish()
+    {
+        if (timer < 0.0F)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+    }
 }
